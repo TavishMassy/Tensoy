@@ -10,12 +10,12 @@ Built following strict architecture boundaries, deterministic sensors, and conta
 
 ```mermaid
 flowchart LR
-    Client["Client / curl / Frontend"] -->|POST /chat| API["app/main.py (FastAPI)"]
-    API -->|Validate Contract| Schemas["app/schemas.py (Pydantic)"]
-    API -->|Load Config| Config["app/config.py (pydantic-settings)"]
-    API -->|Delegate Logic| Service["app/services/inference.py"]
-    Service -->|Deterministic Mock Inference| API
-    API -->|JSON (response + face emoji)| Client
+    Client["Client / curl / Frontend"] -->|"POST /chat"| API["app/main.py (FastAPI)"]
+    API -->|"Validate Contract"| Schemas["app/schemas.py (Pydantic)"]
+    API -->|"Load Config"| Config["app/config.py (pydantic-settings)"]
+    API -->|"Delegate Logic"| Service["app/services/inference.py"]
+    Service -->|"Deterministic Mock Inference"| API
+    API -->|"JSON (response + face emoji)"| Client
 ```
 
 - **`app/schemas.py`**: API request/response contracts strictly decoupled from business logic.
