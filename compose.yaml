@@ -1,8 +1,13 @@
 services:
   tensoy:
-    image: tensoy
+    container_name: tensoy-api
+    image: tensoy:latest
     build:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - 8000:8000
+      - "8000:8000"
+    environment:
+      - MOCK_MODE=true
+      - ENVIRONMENT=development
+    restart: unless-stopped
